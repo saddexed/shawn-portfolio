@@ -7,7 +7,6 @@ import React from 'react';
 import { AnimatedIcon } from '../../components/AnimatedIcon';
 import { ButtonPrimary } from '../../components/ButtonPrimary';
 import Toast from '../../components/Toast';
-import Toolbox from '../../components/Toolbox';
 import copyBioIcon from '../../public/static/icons/copy-bio.json';
 import downloadIcon from '../../public/static/icons/download.json';
 
@@ -134,8 +133,8 @@ export default function AboutClient() {
           <TextInvert>Cloud Computing</TextInvert>.
         </p>
         <p className="md:my-3.75">
-          I&apos;m a <TextInvert>CTF</TextInvert> player and love learning topics within the grasp of my understanding.
-          I&apos;m also a <TextInvert>light mode </TextInvert> user (yes we exist 😔), and love destroying my windows installation with automation projects and tweaks using <TextInvert>powershell</TextInvert>, <TextInvert>bash</TextInvert> and <TextInvert>C#</TextInvert> for that extra 0.047% productivity.
+          I&apos;m a <TextInvert>CTF player</TextInvert>{' '}and love learning topics within the grasp of my understanding.
+          I&apos;m also a <TextInvert>light mode</TextInvert>{' '}user (yes we exist 😔), and love destroying my windows installation with automation projects and tweaks using <TextInvert>powershell</TextInvert>, <TextInvert>bash</TextInvert> and <TextInvert>C#</TextInvert> for that extra 0.047% productivity.
           <br />
           When I&apos;m not working, I like playing games, watching shows, and
           exploring new tools on the web and yapping to friends.
@@ -162,7 +161,7 @@ export default function AboutClient() {
       <TextInvert>infrastructure management</TextInvert>, and{' '}
       <TextInvert>ensuring secure development practices</TextInvert>. He currently
       holds 2 certifications: <TextInvert>CompTIA Security+</TextInvert> and{' '}
-      <TextInvert>AWS Certified Cloud Practitioner</TextInvert> - with plans for more cloud based ones in the future.
+      <TextInvert>AWS Certified Cloud Practitioner</TextInvert> with plans for more cloud based ones in the future.
     </>
   );
 
@@ -290,7 +289,6 @@ export default function AboutClient() {
       {renderBio()}
       <h2>Career</h2>
       {renderAll()}
-      <Toolbox />
       <Toast
         title={toastTitle}
         description={toastDescription}

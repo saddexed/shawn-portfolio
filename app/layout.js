@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 import Script from 'next/script';
 
 import CommandBar from '../components/CommandBar';
+import CustomCursor from '../components/CustomCursor';
 import { GA_TRACKING_ID } from '../lib/gtag';
 import { getSiteUrl } from '../lib/site-url';
 import Template from './template';
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
             gtag('config', '${GA_TRACKING_ID}');
           `}
         </Script>
+        <CustomCursor />
         <Template>
           <CommandBar>{children}</CommandBar>
         </Template>

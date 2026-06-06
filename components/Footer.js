@@ -3,7 +3,7 @@ import Link from 'next/link';
 const FOOTER_LINKS = [
   {
     title: 'Email',
-    url: '/contact',
+    url: 'mailto:hireme@shaunedwin.com',
     icon: 'ri-mail-line'
   },
   {
@@ -53,7 +53,16 @@ const FooterLink = ({ title, url, icon }) => {
     );
   }
 
+  const isMailTo = url.startsWith('mailto:');
   const isExternal = url.startsWith('http');
+
+  if (isMailTo) {
+    return (
+      <a href={url} className={LINK_CLASS}>
+        {content}
+      </a>
+    );
+  }
 
   if (isExternal) {
     return (

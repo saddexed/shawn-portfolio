@@ -19,9 +19,9 @@ import copyLinkIcon from '../public/static/icons/copy-link.json';
 import emailIcon from '../public/static/icons/email.json';
 import homeIcon from '../public/static/icons/home.json';
 import projectsIcon from '../public/static/icons/projects.json';
-import reminderIcon from '../public/static/icons/reminder.json';
+import codeIcon from '../public/static/icons/code.json';
 import sourceIcon from '../public/static/icons/source.json';
-import usesIcon from '../public/static/icons/uses.json';
+import setupIcon from '../public/static/icons/uses.json';
 import { AnimatedIcon } from './AnimatedIcon';
 import { Box } from './Box';
 import Toast from './Toast';
@@ -40,17 +40,19 @@ export default function CommandBar(props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [toastTitle, setToastTitle] = useState('Copied :D');
+  const [toastDescription, setToastDescription] = useState('You can now share it with anyone.');
   const iconRefsMap = useRef(new Map());
 
   const shortcutCombos = {
-    copy: ['l'],
+    copy: ['c'],
     email: ['e'],
-    source: ['s'],
+    source: ['v'],
     home: ['h'],
     about: ['a'],
     projects: ['p'],
-    uses: ['u'],
-    reminder: ['r']
+    languages: ['l'],
+    setup: ['s'],
   };
   // articles: ['b'],
 
@@ -65,6 +67,8 @@ export default function CommandBar(props) {
         iconData: copyLinkIcon,
         perform: () => {
           navigator.clipboard.writeText(window.location.href);
+          setToastTitle('Copied :D');
+          setToastDescription('You can now share it with anyone.');
           setShowToast(true);
           setOpen(false);
         },
@@ -72,13 +76,16 @@ export default function CommandBar(props) {
       },
       {
         id: 'email',
-        name: 'Send Email',
+        name: 'Copy Email',
         shortcut: shortcutCombos.email,
-        keywords: 'send-email',
+        keywords: 'copy-email',
         section: 'General',
         iconData: emailIcon,
         perform: () => {
-          router.push('/contact');
+          navigator.clipboard.writeText('hireme@shaunedwin.com');
+          setToastTitle('Copied Email :D');
+          setToastDescription('hireme@shaunedwin.com is now in your clipboard.');
+          setShowToast(true);
           setOpen(false);
         },
         iconId: 'email'
@@ -151,31 +158,31 @@ export default function CommandBar(props) {
         iconId: 'projects'
       },
       {
-        id: 'uses',
-        name: 'Uses',
-        shortcut: shortcutCombos.uses,
-        keywords: 'go-uses',
+        id: 'languages',
+        name: 'Languages',
+        shortcut: shortcutCombos.languages,
+        keywords: 'go-languages',
         section: 'Go To',
-        iconData: usesIcon,
+        iconData: codeIcon,
         perform: () => {
-          router.push('/uses');
+          router.push('/languages');
+          setOpen(false);
+        },
+        iconId: 'reminder'
+      },
+      {
+        id: 'setup',
+        name: 'Setup',
+        shortcut: shortcutCombos.setup,
+        keywords: 'go-setup',
+        section: 'Go To',
+        iconData: setupIcon,
+        perform: () => {
+          router.push('/setup');
           setOpen(false);
         },
         iconId: 'uses'
       },
-      {
-        id: 'reminder',
-        name: 'Reminder',
-        shortcut: shortcutCombos.reminder,
-        keywords: 'go-reminder',
-        section: 'Go To',
-        iconData: reminderIcon,
-        perform: () => {
-          router.push('/reminder');
-          setOpen(false);
-        },
-        iconId: 'reminder'
-      }
     ]
   };
 
@@ -206,9 +213,9 @@ export default function CommandBar(props) {
   useHotkeys(shortcutCombos.projects.join('>'), () =>
     actionsById.projects.perform()
   );
-  useHotkeys(shortcutCombos.uses.join('>'), () => actionsById.uses.perform());
-  useHotkeys(shortcutCombos.reminder.join('>'), () =>
-    actionsById.reminder.perform()
+  useHotkeys(shortcutCombos.setup.join('>'), () => actionsById.setup.perform());
+  useHotkeys(shortcutCombos.languages.join('>'), () =>
+    actionsById.languages.perform()
   );
 
   return (
@@ -262,8 +269,8 @@ export default function CommandBar(props) {
       </Dialog.Root>
       {props.children}
       <Toast
-        title="Copied :D"
-        description="You can now share it with anyone."
+        title={toastTitle}
+        description={toastDescription}
         isSuccess={true}
         showToast={showToast}
         setShowToast={setShowToast}

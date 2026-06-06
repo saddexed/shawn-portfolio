@@ -1,12 +1,12 @@
 import Base from '../../layouts/Base';
 
 export const metadata = {
-  title: 'Uses',
+  title: 'Setup',
   description:
-    'A small starter uses page for tools, apps, hardware, and services.',
+    'A small starter setup page for tools, apps, hardware, and services.',
   openGraph: {
-    title: 'Uses // Shaun Beniel Edwin',
-    url: '/uses',
+    title: 'Setup // Shaun Beniel Edwin',
+    url: '/setup',
     images: ['/static/images/uses-bw.jpg']
   }
 };
@@ -72,7 +72,7 @@ const categories = [
       },
       {
         title: 'Debian Linux',
-        description: 'Debian turned my old laptop into a headless nas, filed my taxes,took my wife on a honeymoon for me and proceeded to shoot my dog for <a href="https://xkcd.com/1168/">failing a tar command</a>',
+        description: 'Debian turned my old laptop into a headless nas, filed my taxes, took my wife on a honeymoon for me and proceeded to shoot my dog for <a href="https://xkcd.com/1168/">failing a tar command</a>',
         url: 'https://www.debian.org'
       },
       {
@@ -83,7 +83,7 @@ const categories = [
       {
         title: 'PowerToys',
         description: 'Windows 11 but I install 50 Minecraft QoL mods',
-        url: 'https://learn.microsoft.com/en-us/windows/powertoys/'
+        url: 'https://learn.microsoft.com/en-us/windows/powToys/'
       }
     ]
   },
@@ -120,7 +120,7 @@ const categories = [
 ];
 
 
-export default function Uses() {
+export default function Setup() {
   const renderAll = () => {
     return categories.map((category) => {
       return (
@@ -148,7 +148,7 @@ export default function Uses() {
 
   return (
     <Base
-      title="Uses // Shaun Beniel Edwin"
+      title="Setup // Shaun Beniel Edwin"
       tagline="Tools. Apps. Gear."
       primaryColor="yellow"
       secondaryColor="pink"

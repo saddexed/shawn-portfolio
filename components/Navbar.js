@@ -8,7 +8,8 @@ import { HoverAnimation } from './HoverAnimation';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const pages = ['About', 'Projects', 'Uses', 'Reminder']; // 'Article' removed for now
+
+  const pages = ['About', 'Projects', 'Languages', 'Setup']; // 'Article' removed for now
   const { toggle } = useCommandBar();
 
   return (
