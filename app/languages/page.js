@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     title: 'Languages & Frameworks // Shaun Beniel Edwin',
     url: '/languages',
-    images: ['/static/images/reminder-bw.jpg']
+    images: ['/static/images/languages-bw.jpg']
   }
 };
 

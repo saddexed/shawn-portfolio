@@ -18,6 +18,7 @@ import aboutIcon from '../public/static/icons/about.json';
 import copyLinkIcon from '../public/static/icons/copy-link.json';
 import emailIcon from '../public/static/icons/email.json';
 import homeIcon from '../public/static/icons/home.json';
+import paperIcon from '../public/static/icons/paper.json';
 import projectsIcon from '../public/static/icons/projects.json';
 import codeIcon from '../public/static/icons/code.json';
 import sourceIcon from '../public/static/icons/source.json';
@@ -51,6 +52,7 @@ export default function CommandBar(props) {
     home: ['h'],
     about: ['a'],
     projects: ['p'],
+    resume: ['r'],
     languages: ['l'],
     setup: ['s'],
   };
@@ -158,6 +160,19 @@ export default function CommandBar(props) {
         iconId: 'projects'
       },
       {
+        id: 'resume',
+        name: 'Resume',
+        shortcut: shortcutCombos.resume,
+        keywords: 'go-resume cv curriculum-vitae',
+        section: 'Go To',
+        iconData: paperIcon,
+        perform: () => {
+          router.push('/resume');
+          setOpen(false);
+        },
+        iconId: 'paper'
+      },
+      {
         id: 'languages',
         name: 'Languages',
         shortcut: shortcutCombos.languages,
@@ -213,6 +228,7 @@ export default function CommandBar(props) {
   useHotkeys(shortcutCombos.projects.join('>'), () =>
     actionsById.projects.perform()
   );
+  useHotkeys(shortcutCombos.resume.join('>'), () => actionsById.resume.perform());
   useHotkeys(shortcutCombos.setup.join('>'), () => actionsById.setup.perform());
   useHotkeys(shortcutCombos.languages.join('>'), () =>
     actionsById.languages.perform()
