@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Setup // Shaun Beniel Edwin',
     url: '/setup',
-    images: ['/static/images/uses-bw.jpg']
+    images: ['/static/images/setup-bw.jpg']
   }
 };
 

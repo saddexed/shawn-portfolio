@@ -12,8 +12,8 @@ export const metadata = {
   openGraph: {
     title: 'Shaun Beniel Edwin',
     description: 'Chronically Online Developer',
-    url: '/'
-    // images: ['/static/images/home-bw.jpg']
+    url: '/',
+    images: ['/static/images/home-bw.jpg']
   }
 };
 
