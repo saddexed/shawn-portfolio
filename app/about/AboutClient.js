@@ -9,6 +9,7 @@ import { ButtonPrimary } from '../../components/ButtonPrimary';
 import Toast from '../../components/Toast';
 import copyBioIcon from '../../public/static/icons/copy-bio.json';
 import downloadIcon from '../../public/static/icons/download.json';
+import saveIcon from '../../public/static/icons/save.json';
 
 const items = [
   // {
@@ -109,11 +110,20 @@ export default function AboutClient() {
   const [showToast, setShowToast] = React.useState(false);
   const copyBioRef = React.useRef();
   const downloadRef = React.useRef();
+  const saveRef = React.useRef();
+
+  const handleTLDRClick = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('tldr');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const renderIntro = () => {
     return (
       <div className="flow-root">
-        <div className="mt-0 w-64 mx-auto md:float-left md:mr-10 md:mb-5 md:w-84 md:mx-0">
+        <div className="mt-0 w-64 mx-auto md:float-left md:mr-10 md:mb-5 md:w-84 md:mx-0 relative group rounded-lg overflow-hidden">
           <Image
             alt="Shaun Beniel Edwin"
             src="/static/images/avatar.jpg"
@@ -123,6 +133,25 @@ export default function AboutClient() {
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAP0lEQVQImQE0AMv/AFBQUJKSkqmpqaOjowCurq7v7+/Jycm5ubkA////jIyMn5+fg4ODADAwMD09PWlpaQAAAApRGnEHblMWAAAAAElFTkSuQmCC"
             priority
           />
+          <a
+            href="/static/images/avatar.jpg"
+            download
+            onClick={downloadHeadshot}
+            onMouseEnter={() => saveRef.current?.play()}
+            onMouseLeave={() => saveRef.current?.stop()}
+
+            className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-background/85 backdrop-blur-md border border-secondary/20 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-50 hover:opacity-90 transition-all duration-300 cursor-pointer"
+            style={{ borderBottom: 'none' }}
+            title="Save Headshot"
+          >
+            <AnimatedIcon
+              lottieRef={saveRef}
+              animationData={saveIcon}
+              loop={false}
+              autoplay={false}
+              className="w-4 h-4 text-primary fill-current"
+            />
+          </a>
         </div>
         <p className="mt-4 md:my-3.75 md:-mt-1.5">
           <strong className="mb-10">Hey there, <TextInvert>I&apos;m Shaun</TextInvert></strong>
@@ -169,7 +198,7 @@ export default function AboutClient() {
     return (
       <div>
         <p>
-          Here's my bio in a few words for employers and recruiters. You can use this if you want a <TextInvert>TL:DR</TextInvert> of me.
+          Here's my bio in a few words for employers and recruiters. Or if you're just lazy. <span style={{ fontSize: '0.55rem' }}>(No offense)</span>
         </p>
         <blockquote>
           <p>{bioDescription}</p>
@@ -284,8 +313,23 @@ export default function AboutClient() {
 
   return (
     <>
+      <div className="flex justify-end mb-2">
+        <a
+          href="#tldr"
+          onClick={handleTLDRClick}
+          className="inline-flex items-center text-xxs px-1 font-semibold text-secondary hover:text-black hover:bg-white transition-all duration-300 cursor-pointer hover:scale-110"
+          // className="inline-flex items-center text-xs px-2 py-0.75 font-semibold text-secondary hover:text-primary bg-secondary/10 hover:bg-secondary/20 transition-all duration-300 border border-secondary/50 rounded cursor-pointer"
+          style={{ borderBottom: 'none' }}
+
+        >
+          <span>→TL;DR</span>
+          {/* <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 3a1 1 0 011 1v9.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 13.586V4a1 1 0 011-1z" clipRule="evenodd" />
+          </svg> */}
+        </a>
+      </div>
       {renderIntro()}
-      <h2>Bio</h2>
+      <h2 id="tldr">TL;DR</h2>
       {renderBio()}
       <h2>Career</h2>
       {renderAll()}
